@@ -15,6 +15,7 @@ import {
   AccordionContent,
 } from '@/components/ui/accordion'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { TypographySection } from '@/components/controls/typography/TypographySection'
 
 const sections = [
   { value: 'typography', label: 'Typography', icon: Type },
@@ -26,6 +27,17 @@ const sections = [
   { value: 'borders', label: 'Borders', icon: Square },
   { value: 'zindex', label: 'Z-Index', icon: Hash },
 ] as const
+
+function SectionContent({ value }: { value: string }) {
+  if (value === 'typography') {
+    return <TypographySection />
+  }
+  return (
+    <p className="text-sm text-zinc-500">
+      {value.charAt(0).toUpperCase() + value.slice(1)} controls — coming soon
+    </p>
+  )
+}
 
 export function LeftPanel() {
   return (
@@ -42,9 +54,7 @@ export function LeftPanel() {
                   </span>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="text-sm text-zinc-500">
-                    {label} controls — coming soon
-                  </p>
+                  <SectionContent value={value} />
                 </AccordionContent>
               </AccordionItem>
             ))}
