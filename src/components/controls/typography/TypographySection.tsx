@@ -2,20 +2,13 @@ import { useState, useEffect } from 'react'
 import { useDesignSystemStore } from '@/store/design-system-store'
 import { Separator } from '@/components/ui/separator'
 import { Switch } from '@/components/ui/switch'
+import { SectionLabel } from '@/components/controls/SectionLabel'
 import { FontPicker } from '@/components/controls/typography/FontPicker'
 import { TypeScaleControls } from '@/components/controls/typography/TypeScaleControls'
 import { HeadingControls } from '@/components/controls/typography/HeadingControls'
 import { BodyControls } from '@/components/controls/typography/BodyControls'
 import { LineHeightControls } from '@/components/controls/typography/LineHeightControls'
 import { LetterSpacingControls } from '@/components/controls/typography/LetterSpacingControls'
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="mb-3 block text-xs uppercase tracking-wider text-zinc-500">
-      {children}
-    </span>
-  )
-}
 
 export function TypographySection() {
   const [linked, setLinked] = useState(false)
@@ -37,7 +30,9 @@ export function TypographySection() {
     <div className="space-y-4">
       {/* FONTS */}
       <div>
-        <SectionLabel>Fonts</SectionLabel>
+        <SectionLabel info="Choose typefaces for body text, headings, and code. Google Fonts are loaded automatically. Link heading to primary to keep them in sync.">
+          Fonts
+        </SectionLabel>
         <div className="space-y-3">
           <FontPicker role="primary" />
           <FontPicker role="heading" />
@@ -47,7 +42,6 @@ export function TypographySection() {
               Link heading to primary
             </span>
             <Switch
-              size="sm"
               checked={linked}
               onCheckedChange={setLinked}
             />
@@ -59,7 +53,9 @@ export function TypographySection() {
 
       {/* SCALE */}
       <div>
-        <SectionLabel>Scale</SectionLabel>
+        <SectionLabel info="Define the mathematical relationship between font sizes. The base size and ratio generate a consistent scale. Each step produces a fluid clamp() value that interpolates smoothly between mobile and desktop viewports.">
+          Scale
+        </SectionLabel>
         <TypeScaleControls />
       </div>
 
@@ -67,7 +63,9 @@ export function TypographySection() {
 
       {/* HEADINGS */}
       <div>
-        <SectionLabel>Headings</SectionLabel>
+        <SectionLabel info="Configure each heading level (H1-H6) with a size from the type scale, font weight, line height, letter spacing, and text transform. These map directly to CSS variables in the output.">
+          Headings
+        </SectionLabel>
         <HeadingControls />
       </div>
 
@@ -75,7 +73,9 @@ export function TypographySection() {
 
       {/* BODY & CAPTION */}
       <div>
-        <SectionLabel>Body &amp; Caption</SectionLabel>
+        <SectionLabel info="Set the default styles for body text and captions. Body is your main paragraph style. Caption is for smaller supporting text like image descriptions and metadata.">
+          Body &amp; Caption
+        </SectionLabel>
         <BodyControls />
       </div>
 
@@ -83,7 +83,9 @@ export function TypographySection() {
 
       {/* LINE HEIGHTS */}
       <div>
-        <SectionLabel>Line Heights</SectionLabel>
+        <SectionLabel info="Named line height tokens used across headings and body text. Tight values work well for large headings, while normal or relaxed values improve readability for body copy.">
+          Line Heights
+        </SectionLabel>
         <LineHeightControls />
       </div>
 
@@ -91,7 +93,9 @@ export function TypographySection() {
 
       {/* LETTER SPACING */}
       <div>
-        <SectionLabel>Letter Spacing</SectionLabel>
+        <SectionLabel info="Named letter spacing (tracking) tokens. Negative values tighten text — useful for large headings. Positive values add space — useful for small uppercase labels and captions.">
+          Letter Spacing
+        </SectionLabel>
         <LetterSpacingControls />
       </div>
     </div>
