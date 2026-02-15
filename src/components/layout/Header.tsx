@@ -24,7 +24,7 @@ export function Header() {
       <div className="flex items-center gap-2">
         <Paintbrush className="size-5 text-zinc-400" />
         <span className="text-sm font-semibold tracking-tight text-zinc-100">
-          Nastyluj COSI
+          Naštýluj ČOSI
         </span>
       </div>
 

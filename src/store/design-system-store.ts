@@ -18,11 +18,11 @@ const ACTION_KEYS: ReadonlyArray<keyof DesignSystemActions> = [
 ]
 
 function stripActions(state: DesignSystemStore): DesignSystemState {
-  const plain = { ...state } as Record<string, unknown>
+  const plain = { ...state } as unknown as Record<string, unknown>
   for (const key of ACTION_KEYS) {
     delete plain[key]
   }
-  return plain as DesignSystemState
+  return plain as unknown as DesignSystemState
 }
 
 function getInitialState(): DesignSystemState {
